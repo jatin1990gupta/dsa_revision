@@ -37,16 +37,9 @@ class Sparse {
 
 void Sparse::create(){
     int rowIndex, colIndex, val;
-    for (int i = 0; i < num; i++) {
-        cout << "Enter i: ";
-        cin >> rowIndex;
-        cout << "Enter j: ";
-        cin >> colIndex;
-        cout << "Enter val: ";
-        cin >> val;
-        Element e(rowIndex, colIndex, val);
-        elem[i] = e;
-    }
+    cout << "Enter non-zero elements: \n ";
+    for (int i = 0; i < num; i++)
+        cin >> elem[i].i >> elem[i].j >> elem[i].x;
 }
 
 void Sparse::display(){
