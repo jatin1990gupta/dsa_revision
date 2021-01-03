@@ -41,8 +41,9 @@ void insertElem(Node *p){
     cout << "Insert at index: ";
     cin >> pos;
 
-    while(--pos){
+    while(pos>0 && p->next!=NULL){
         p = p->next;
+        pos--;
     }
     q = new Node;
     q->data = val;
