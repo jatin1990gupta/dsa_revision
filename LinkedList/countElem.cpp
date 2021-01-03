@@ -4,41 +4,54 @@ using namespace std;
 struct Node {
     int data;
     struct Node *next;
-};
+} *head;
 
-int main() {
-    int n, i;
-
-    struct Node *head=NULL;
-    struct Node *t, *last;
-
-    cout << "Enter num of terms: ";
-    cin >> n;
+void createList(int n) {
+    int i;
+    struct Node *q, *last;
 
     head = new Node;
-
-    cout << "Enter val";
+    cout << "Enter val: ";
     cin >> head->data;
-
-    head->next = NULL;
-
+    head->next = NULL;  
     last = head;
 
-    for (i = 1; i < n;i++){
-        t = new Node;
-        cout << "Enter val";
-        cin >> t->data;
-        t->next = NULL;
-        last->next = t;
-        last = last->next;
+    for(i=1; i<n;i++){
+        q = new Node;
+        cout << "Enter val: ";
+        cin >> q->data;
+        q->next = NULL;
+        last->next = q;
+        last = q;
     }
+}
 
-    last = head;
+void displayList(struct Node *p){
 
-    while(last!=NULL){
-        cout << last->data << " ";
-        last = last->next;
+    while(p!=NULL) {
+        cout << p->data << " ";
+        p = p->next;
     }
+    cout << endl;
+}
 
+int countElem(struct Node *p) {
+    int count = 1;
+    while(p!=NULL){
+        count++;
+        p = p->next;
+    }
+    return count;
+}
+
+int main() {
+    int n, elem;    
+
+    cout << "Enter number of elem: ";
+    cin >> n;
+
+    createList(n);
+    displayList(head);
+    cout << "Count: " << countElem(head) << endl;
     return 0;
 }
