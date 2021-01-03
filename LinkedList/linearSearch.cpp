@@ -36,12 +36,10 @@ void displayList(struct Node *p){
 }
 
 Node * searchElem(struct Node *p, int key) {
-    int index = 1;
     while(p!=NULL) {
         if(p->data==key){
             return p;
         }
-        index++;
         p = p->next;
     }
     return NULL;
