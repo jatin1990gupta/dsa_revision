@@ -1,6 +1,22 @@
 #include<iostream>
-#include "Queue.h"
+#include<bits/stdc++.h>
 using namespace std;
+
+class TreeNode {
+    public:
+        int data;
+        TreeNode *left;
+        TreeNode *right;
+        TreeNode(){
+            this->left = 0;
+            this->right = 0;
+        }
+        TreeNode(int data){
+            this->data = data;
+            this->left = 0;
+            this->right = 0;
+        }
+};
 
 class Tree{
     public:
@@ -16,20 +32,6 @@ class Tree{
         }
         void Preorder(TreeNode *p);
 
-        void Inorder() { 
-            cout << "Inorder: ";
-            Inorder(root); 
-        }
-        void Inorder(TreeNode *p);
-
-        void Postorder() { 
-            cout << "Postorder: ";
-            Postorder(root); 
-        }
-        void Postorder(TreeNode *p);
-
-        void Levelorder();
-
         void Height() { cout<<"Height of the tree is: "<<Height(root)<<endl; }
         int Height(TreeNode *p);
 };
@@ -37,26 +39,27 @@ class Tree{
 
 void Tree::createTree(){
     TreeNode *p, *q;
-    Queue Q;
+    queue<TreeNode *> Q;
     int lval, rval;
     cout << "Enter root node value: ";
     cin >> root->data;
-    Q.enqueue(root);
+    Q.emplace(root);
     while(!Q.empty()){
-        p = Q.dequeue();
+        p = Q.front();
+        Q.pop();
         cout << "Enter left child of "<<p->data<<": ";
         cin >> lval;
         if(lval!=-1){
             q = new TreeNode(lval);
             p->left = q;
-            Q.enqueue(q);
+            Q.emplace(q);
         }
         cout << "Enter right child of "<<p->data<<": ";
         cin >> rval;
         if(rval!=-1){
             q = new TreeNode(rval);
             p->right = q;
-            Q.enqueue(q);
+            Q.emplace(q);
         }
     }
 }
@@ -66,37 +69,6 @@ void Tree::Preorder(TreeNode *p){
         cout << p->data<<" ";
         Preorder(p->left);
         Preorder(p->right);
-    }
-}
-void Tree::Inorder(TreeNode *p){
-    if(p){
-        Inorder(p->left);
-        cout << p->data<<" ";
-        Inorder(p->right);
-    }   
-}
-void Tree::Postorder(TreeNode *p){
-    if(p){
-        Postorder(p->left);
-        Postorder(p->right);
-        cout << p->data<<" ";
-    }   
-}
-
-void Tree::Levelorder(){
-    TreeNode *p;
-    Queue Q;
-    Q.enqueue(root);
-    cout << "Levelorder: ";
-    while(!Q.empty()){
-        p = Q.dequeue();
-        cout << p->data << " ";
-        if(p->left){
-            Q.enqueue(p->left);
-        }
-        if(p->right){
-            Q.enqueue(p->right);
-        }
     }
 }
 
@@ -117,12 +89,6 @@ int main() {
     Tree t;
     t.createTree();
     t.Preorder();
-    cout << endl;
-    t.Inorder();
-    cout << endl;
-    t.Postorder();
-    cout << endl;
-    t.Levelorder();
     cout << endl;
     t.Height();
     return 0;
