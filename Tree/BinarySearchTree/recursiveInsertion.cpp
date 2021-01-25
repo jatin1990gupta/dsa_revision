@@ -32,7 +32,6 @@ class BST{
             cout << endl;
         }
         void Preorder(TreeNode *p);
-        }
 };
 
 void BST::create(){
