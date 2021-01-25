@@ -22,7 +22,7 @@ class BST{
         TreeNode *root;
     public:
         BST(){
-            root = new TreeNode;
+            root = NULL;
         }
         void create();
         TreeNode * insert(TreeNode* p, int elem);
@@ -36,15 +36,17 @@ class BST{
 
 void BST::create(){
     int elem;
+    int rootVal;
     cout << "Enter root node value: ";
-    cin >> root->data;
+    cin >> rootVal;
+    root = insert(root, rootVal);
     while(1){
         cout << "Enter data to insert: ";
         cin >> elem;
         if(elem==-1){
             break;
         } else {
-            root = insert(root, elem);
+            insert(root, elem);
         }
     }
 }
@@ -55,8 +57,7 @@ TreeNode * BST::insert(TreeNode *p, int elem){
     }
     if(p->data>elem){
         p->lchild = insert(p->lchild, elem);
-    }
-    if(p->data<elem){
+    } else if(p->data<elem){
         p->rchild = insert(p->rchild, elem);
     }
     return p;

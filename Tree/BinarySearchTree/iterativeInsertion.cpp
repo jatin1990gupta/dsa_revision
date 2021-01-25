@@ -25,7 +25,7 @@ class BST{
             root = new TreeNode;
         }
         void create();
-        void insert(TreeNode* p, int elem);
+        void insert(int elem);
         void Preorder(){
             cout << "Preorder: ";
             Preorder(root);
@@ -44,12 +44,12 @@ void BST::create(){
         if(elem==-1){
             break;
         } else {
-            insert(root, elem);
+            insert(elem);
         }
     }
 }
 
-void BST::insert(TreeNode *p, int elem){
+void BST::insert(int elem){
     TreeNode *p = root;
     TreeNode *q = NULL;
     TreeNode *r = new TreeNode(elem);
