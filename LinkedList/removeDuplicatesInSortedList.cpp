@@ -33,7 +33,6 @@ void displayList(Node *p) {
 
 void removeDuplicates(Node *p){
     Node *q=NULL;
-
     q = p;
     p = p->next;
     

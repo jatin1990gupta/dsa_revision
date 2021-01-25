@@ -29,8 +29,20 @@ class Tree{
         void Preorder() {
             cout << "Preorder: ";
             Preorder(root);
+            cout << endl;
         }
         void Preorder(TreeNode *p);
+
+        int Height(TreeNode *p);
+        void Height() {
+            cout << "Height of tree is: "<<Height(root);
+            cout << endl;
+        }
+        int countNodes(TreeNode *p);
+        void countNodes() {
+            cout << "No. of nodes are: "<<countNodes(root);
+            cout << endl;
+        }
 };
 
 
@@ -68,9 +80,35 @@ void Tree::Preorder(TreeNode *p){
         Preorder(p->right);
     }
 }
+
+int Tree::Height(TreeNode *p){
+    if(p) {
+        int x, y;
+        x = Height(p->left);
+        y = Height(p->right);
+
+        if(x>y)
+            return x + 1;
+        return y + 1;
+    }
+    return 0;
+}
+
+int Tree::countNodes(TreeNode *p){
+    if(p){
+        int x, y;
+        x = countNodes(p->left);
+        y = countNodes(p->right);
+        return x + y + 1;
+    }
+    return 0;
+}
+
 int main() {
     Tree t;
     t.createTree();
     t.Preorder();
+    t.Height();
+    t.countNodes();
     return 0;
 }
