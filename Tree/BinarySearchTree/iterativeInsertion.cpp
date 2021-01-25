@@ -32,12 +32,6 @@ class BST{
             cout << endl;
         }
         void Preorder(TreeNode *p);
-        TreeNode* Search(int elem);
-
-        TreeNode* RSearch(TreeNode*p, int elem);
-
-        TreeNode* RSearch(int elem){
-            return RSearch(root, elem);
         }
 };
 

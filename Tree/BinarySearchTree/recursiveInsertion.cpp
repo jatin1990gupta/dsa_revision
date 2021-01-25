@@ -32,12 +32,6 @@ class BST{
             cout << endl;
         }
         void Preorder(TreeNode *p);
-        TreeNode* Search(int elem);
-
-        TreeNode* RSearch(TreeNode*p, int elem);
-
-        TreeNode* RSearch(int elem){
-            return RSearch(root, elem);
         }
 };
 
@@ -75,33 +69,6 @@ void BST::Preorder(TreeNode *p){
         Preorder(p->lchild);
         Preorder(p->rchild);
     }
-}
-
-TreeNode* BST::Search(int elem){
-    TreeNode *p = root;
-    while(p){
-        if(p->data==elem){
-            return p;
-        } else if(p->data>elem){
-            p = p->lchild;
-        }
-        else {
-            p = p->rchild;
-        }
-    }
-    return NULL;
-}
-
-TreeNode* BST::RSearch(TreeNode* p, int elem){
-    if(p){
-        if(p->data==elem)
-            return p;
-        else if(p->data>elem)
-            return RSearch(p->lchild, elem);
-        else
-            return RSearch(p->rchild, elem);
-    }
-    return NULL;
 }
 
 int main() {
