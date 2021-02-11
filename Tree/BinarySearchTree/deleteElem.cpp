@@ -79,7 +79,7 @@ TreeNode * BST::Delete(TreeNode *p, int elem){
     if(p==NULL){
         return NULL;
     }
-    if(p->lchild==NULL && p->rchild==NULL){
+    if(p->lchild==NULL && p->rchild==NULL && p->data==elem){
         if(p==root){
             root = NULL;
         }
